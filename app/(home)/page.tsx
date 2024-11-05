@@ -1,7 +1,7 @@
 // * page or layout 만 metadata 를 내보낼 수 있다.
 // * metadata 는 서버 컴포넌트에만 있을 수 있다.
 export const metadata = {
-  title: "Home | Home test",
+  title: "Home Title",
   description: "Text nextjs metadata",
 };
 
