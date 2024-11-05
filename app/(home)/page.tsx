@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Home | Home test",
+  description: "Text nextjs metadata",
+};
+
 export default function RootPage() {
   return (
     <div>
