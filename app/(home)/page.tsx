@@ -1,17 +1,33 @@
+"use client";
+import { useEffect, useState } from "react";
+
 // * page or layout 만 metadata 를 내보낼 수 있다.
 // * metadata 는 서버 컴포넌트에만 있을 수 있다.
-export const metadata = {
-  title: "Home Title",
-  description: "Text nextjs metadata",
-};
+// export const metadata = {
+//   title: "Home Title",
+//   description: "Text nextjs metadata",
+// };
 
 export default function RootPage() {
-  console.log(process.env.DATA_FETCH_URL);
-  return (
-    <div>
-      <h1>Hello</h1>
-    </div>
-  );
+  const [isLoading, setIsLoading] = useState(true);
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    async function getMovies() {
+      const response = await fetch(
+        "https://nomad-movies.nomadcoders.workers.dev/movies"
+      );
+
+      const json = await response.json();
+
+      setMovies(json);
+      setIsLoading(false);
+    }
+
+    getMovies();
+  }, [setMovies, setIsLoading]);
+
+  return <div>{isLoading ? "Loading..." : JSON.stringify(movies)}</div>;
 }
 
 /**
