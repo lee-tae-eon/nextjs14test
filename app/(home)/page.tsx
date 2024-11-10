@@ -6,6 +6,7 @@ export const metadata = {
 };
 
 export default function RootPage() {
+  console.log(process.env.DATA_FETCH_URL);
   return (
     <div>
       <h1>Hello</h1>
