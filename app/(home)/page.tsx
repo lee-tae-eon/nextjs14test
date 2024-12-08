@@ -1,11 +1,23 @@
 const URI = "https://nomad-movies.nomadcoders.workers.dev/movies";
 
-export default function Page() {
-  return <div></div>;
+/**
+ * ! server components
+ *
+ */
+async function getMovies() {
+  const res = await (await fetch(URI)).json();
+  console.log(res);
+  return res;
+}
+
+export default async function HomePage() {
+  const movies = await getMovies();
+
+  return <div>{JSON.stringify(movies)}</div>;
 }
 
 /**
- * 클라이언트 사이드 방식
+ * ! 클라이언트 사이드 방식
  */
 // "use client";
 // import { useEffect, useState } from "react";
