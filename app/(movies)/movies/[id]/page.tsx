@@ -1,9 +1,18 @@
+import { API_URL } from "../../../(home)/page";
+
+async function getMovie(id: string) {
+  const res = await (await fetch(`${API_URL}/${id}`)).json();
+
+  return res;
+}
 // * dinamic route test
 // * props -> params, searchparams
-export default function MovieDetail({
+export default async function MovieDetail({
   params: { id },
 }: {
   params: { id: string };
 }) {
-  return <h3>Movie #{id}</h3>;
+  const movie = await getMovie(id);
+
+  return <h3>{movie.title}</h3>;
 }
