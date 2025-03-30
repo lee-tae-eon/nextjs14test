@@ -13,7 +13,7 @@ export const API_URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
  */
 async function getMovies() {
   // 강제 로딩
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  // await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const res = await (await fetch(API_URL)).json();
 
